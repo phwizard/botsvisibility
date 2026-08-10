@@ -95,7 +95,7 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">waf-check</h1>
+        <h1 className="text-3xl font-bold tracking-tight">botsvisibility</h1>
         <p className="mt-2 text-slate-400">
           Probes any URL with 80+ real crawler user-agents (search engines, AI, SEO, directory, social).
           Shows which crawlers your host is blocking, throttling, or serving noindex challenges to.
@@ -214,8 +214,8 @@ export default function Home() {
 
       <footer className="mt-16 border-t border-slate-800 pt-6 text-sm text-slate-500">
         Open source (MIT).{" "}
-        <a href="https://github.com/phwizard/waf-check" className="text-emerald-400 hover:underline">
-          github.com/phwizard/waf-check
+        <a href="https://github.com/phwizard/botsvisibility" className="text-emerald-400 hover:underline">
+          github.com/phwizard/botsvisibility
         </a>
       </footer>
     </main>

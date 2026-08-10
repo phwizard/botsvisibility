@@ -1,5 +1,5 @@
 {
-  "name": "waf-check",
+  "name": "botsvisibility",
   "version": "0.1.0",
   "private": true,
   "description": "Probe a website with 80+ real crawler user-agents (search, AI, SEO, directory, social) and see which are blocked.",

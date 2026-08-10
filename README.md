@@ -1,8 +1,8 @@
-# waf-check
+# botsvisibility
 
 Probe a website with 80+ real crawler user-agents and see which ones your WAF, CDN, or WordPress security plugin is blocking, throttling, or serving `x-robots-tag: noindex` challenges to.
 
-Live: (TBD after first Vercel deploy)
+Live: <https://waf-check.vercel.app/> (will move to <https://botsvisibility.com/> once DNS is set up)
 
 ## Why
 
