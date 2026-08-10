@@ -1,14 +1,28 @@
 # botsvisibility
 
-Probe a website with 80+ real crawler user-agents and see which ones your WAF, CDN, or WordPress security plugin is blocking, throttling, or serving `x-robots-tag: noindex` challenges to.
+**Live: <https://botsvisibility.com/>**
 
-Live: <https://waf-check.vercel.app/> (will move to <https://botsvisibility.com/> once DNS is set up)
+Probe a website with 80+ real crawler user-agents and see which ones your WAF, CDN, or WordPress security plugin is blocking, throttling, or serving `x-robots-tag: noindex` challenges to.
 
 ## Why
 
-Directory sites (StackShare, G2, Capterra, Crunchbase, SaaSHub), AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended), and even standard search engines like Bing / Yandex / Applebot get quietly 403'd or challenged by default bot-protection settings on shared hosts. Owners rarely notice - the requests never reach the origin, and the tools that would surface the problem (Search Console, Bing Webmaster) either don't report it or blame it on your robots.txt.
+Directory sites (StackShare, G2, Capterra, Crunchbase, SaaSHub), AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Meta AI, Amazonbot, ByteSpider, Cohere, Mistral, ...), and even standard search engines like Bing / Yandex / Applebot get quietly 403'd or challenged by default bot-protection settings on shared hosts. Owners rarely notice - the requests never reach the origin, and the tools that would surface the problem (Google Search Console, Bing Webmaster) either don't report it or blame it on your robots.txt.
 
 This tool sends one request per canonical crawler UA and reports the actual HTTP status your host returned. It runs from a clean Vercel egress, so a positive result means real crawlers can reach you too.
+
+## The story
+
+The tool exists because we discovered our own shared host (SiteGround) was silently 403'ing 26 of 83 canonical crawler UAs on 3 different sites, including:
+
+- **16 of 23 AI crawlers** — GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, Claude-SearchBot, Claude-Web, PerplexityBot, Perplexity-User, CCBot, Google-Extended, Meta-ExternalAgent, Applebot-Extended, Amazonbot, ByteSpider, cohere-ai, Diffbot, Timpi, YouBot, MistralAI-User, AI2Bot, Omgili
+- **All 5 targeted directory bots** — StackShareBot, SaaSHubBot, G2Bot, CrunchbaseBot, CapterraBot
+- **3 SEO tools** — Majestic MJ12bot, Moz DotBot, Moz rogerbot
+
+The block pattern was a regex on `Mozilla/5.0 (compatible; <BotName>/<version>; ...)` — designed in an earlier era to stop generic scrapers, quietly catching every AI training crawler and directory-verification bot as collateral damage. No warning in Search Console. No warning in Bing Webmaster. Just silence.
+
+We migrated one site off SiteGround as an experiment: pass rate went from 69% to 99%. Then we built this tool to make the same diagnostic available to anyone.
+
+More detail: [ethora-bdsm case study](https://github.com/dappros/ethora-bdsm/blob/main/data/reports/260811_allrn-post-migration-audit.md).
 
 ## What it detects
 

@@ -212,11 +212,27 @@ export default function Home() {
         </section>
       )}
 
-      <footer className="mt-16 border-t border-slate-800 pt-6 text-sm text-slate-500">
-        Open source (MIT).{" "}
-        <a href="https://github.com/phwizard/botsvisibility" className="text-emerald-400 hover:underline">
-          github.com/phwizard/botsvisibility
-        </a>
+      <footer className="mt-16 space-y-2 border-t border-slate-800 pt-6 text-sm text-slate-500">
+        <div>
+          botsvisibility - free, open source (MIT).{" "}
+          <a
+            href="https://github.com/phwizard/botsvisibility"
+            className="text-emerald-400 hover:underline"
+          >
+            github.com/phwizard/botsvisibility
+          </a>
+        </div>
+        <div>
+          Built after discovering that SiteGround&apos;s default WAF silently blocked
+          16 of 23 AI crawlers on our sites.{" "}
+          <a
+            href="https://github.com/phwizard/botsvisibility#why"
+            className="text-emerald-400 hover:underline"
+          >
+            Read the story
+          </a>
+          .
+        </div>
       </footer>
     </main>
   );
