@@ -13,6 +13,8 @@ sudo -u botsvis env NODE_OPTIONS=--max-old-space-size=768 nice -n 19 npm run bui
 sudo -u botsvis cp -r .next/static .next/standalone/.next/
 [ -d public ] && sudo -u botsvis cp -r public .next/standalone/ || true
 systemctl restart botsvisibility
-sleep 2
-systemctl is-active botsvisibility
-curl -fsS -o /dev/null -w "local: %{http_code}\n" http://127.0.0.1:3100/
+for i in $(seq 1 20); do
+  curl -fsS -o /dev/null http://127.0.0.1:3100/ 2>/dev/null && { echo "botsvisibility up after ${i}s"; exit 0; }
+  sleep 1
+done
+echo "botsvisibility did not come up"; journalctl -u botsvisibility --no-pager -n 20; exit 1
