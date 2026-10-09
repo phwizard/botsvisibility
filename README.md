@@ -32,7 +32,7 @@ We migrated one site off SiteGround as an experiment: pass rate went from 69% to
 
 ## User-agent list
 
-The [BOT_UAS list](src/lib/uas.ts) is generated from [scripts/waf_uas.txt](https://github.com/dappros/ethora-bdsm/blob/main/scripts/waf_uas.txt) in the parent BDSM workspace and includes 80+ real UAs across:
+The [BOT_UAS list](src/lib/uas.ts) includes 80+ real UAs, taken from each vendor's own documentation where one is published, across:
 
 - **Search engines** - Googlebot (desktop + mobile + image + inspection + storebot), Bingbot, DuckDuckBot, Applebot, YandexBot, Baiduspider, Sogou, Naver Yeti, SeznamBot, Mojeek, Kagi, Marginalia
 - **AI crawlers** - GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, Claude-SearchBot, Claude-Web, PerplexityBot, Perplexity-User, CCBot, Google-Extended, Meta-ExternalAgent, Meta-ExternalFetcher, Applebot-Extended, Amazonbot, ByteSpider, cohere-ai, Diffbot, Timpi, YouBot, MistralAI-User, AI2Bot, Omgili
