@@ -8,7 +8,7 @@ Probe a website with 80+ real crawler user-agents and see which ones your WAF, C
 
 Directory sites (StackShare, G2, Capterra, Crunchbase, SaaSHub), AI crawlers (GPTBot, ClaudeBot, Google-Extended, Meta AI, Amazonbot, ByteSpider, Cohere, Mistral, ...), and even standard search engines like Bing / Yandex / Applebot get quietly 403'd or challenged by default bot-protection settings on shared hosts. Owners rarely notice - the requests never reach the origin, and the tools that would surface the problem (Google Search Console, Bing Webmaster) either don't report it or blame it on your robots.txt.
 
-This tool sends one request per canonical crawler UA and reports the actual HTTP status your host returned. It runs from a clean Vercel egress, so a positive result means real crawlers can reach you too.
+This tool sends one request per canonical crawler UA and reports the actual HTTP status your host returned. The hosted version runs from a clean datacenter IP (a small DigitalOcean server in New York), so a positive result means real crawlers can reach you too. One known limit: hosts that verify bots by source IP, such as Vercel's firewall, challenge a crawler user-agent coming from any non-crawler IP, so those sites will show blocks that the real crawler never sees.
 
 ## The story
 
@@ -56,10 +56,9 @@ Open http://localhost:3000, paste a URL, click Check.
 
 ## Deploy
 
-```bash
-vercel link
-vercel deploy --prod
-```
+The hosted version runs as a Next.js standalone server under systemd behind Caddy. Unit file, deploy script and notes are in [`deploy/`](deploy/README.md). Responses are streamed, so a proxy with a time-to-first-byte limit (Cloudflare: 100s) never cuts a probe short; keep response buffering off (`flush_interval -1` in Caddy).
+
+It also runs on Vercel unchanged (`vercel deploy --prod`), with the caveat above about Vercel-hosted targets.
 
 ## License
 
