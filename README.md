@@ -22,6 +22,8 @@ The block pattern was a regex on `Mozilla/5.0 (compatible; <BotName>/<version>; 
 
 We migrated one site off SiteGround as an experiment: pass rate went from 69% to 99%. Then we built this tool to make the same diagnostic available to anyone.
 
+The full story: [Our web host was quietly hiding us from AI agents](https://mcpforbusinessbook.com/web-host-blocking-ai-crawlers/).
+
 
 ## What it detects
 

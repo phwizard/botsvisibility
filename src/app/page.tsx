@@ -226,7 +226,7 @@ export default function Home() {
           Built after discovering that SiteGround&apos;s default WAF silently blocked
           16 of 23 AI crawlers on our sites.{" "}
           <a
-            href="https://github.com/phwizard/botsvisibility#why"
+            href="https://mcpforbusinessbook.com/web-host-blocking-ai-crawlers/"
             className="text-emerald-400 hover:underline"
           >
             Read the story
